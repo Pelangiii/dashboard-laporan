@@ -9,7 +9,14 @@ class Report extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'judul', 'isi_laporan', 'status'];
+    protected $fillable = [
+        'user_id',
+        'lokasi',
+        'asal_teknisi',
+        'isi_laporan',
+        'status',
+        'foto',
+    ];
 
     public function user()
     {

@@ -6,24 +6,20 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
-{
-    Schema::create('reports', function (Blueprint $table) {
-        $table->id();
-        $table->foreignId('user_id')->constrained()->onDelete('cascade'); // Menghubungkan ke user
-        $table->string('judul');
-        $table->text('isi_laporan');
-        $table->enum('status', ['pending', 'disetujui', 'ditolak'])->default('pending');
-        $table->timestamps();
-    });
-}
+    {
+        Schema::create('reports', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->string('lokasi');
+            $table->string('asal_teknisi');
+            $table->text('isi_laporan');
+            $table->string('status');
+            $table->string('foto')->nullable();
+            $table->timestamps();
+        });
+    }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('reports');
